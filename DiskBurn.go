@@ -30,13 +30,12 @@ func runTest(disk string, arguments []string){
 	scannerOut := bufio.NewScanner(multiOut)
 
 	cmd.Start()
-
+	cmd.Process.Release()
 	for scannerOut.Scan() {
 		m := scannerOut.Text()
 		fmt.Println(m)
 	}
 
-	cmd.Wait()
 }
 
 func rootTest(){
